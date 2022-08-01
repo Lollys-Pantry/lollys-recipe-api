@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Starting the application
 
-Things you may want to cover:
+To run the application using Docker, will need to have Docker installed on your machine. 
+[Get Docker](https://docs.docker.com/get-docker/)
 
-* Ruby version
+Once Docker is installed and running:
 
-* System dependencies
+```bash
+docker compose up
+```
 
-* Configuration
+The first time you start your app, you will need to create a database
 
-* Database creation
+```bash
+docker compose run web rake db:create
+```
 
-* Database initialization
+You can view the app in the browser at `http://localhost:3000/`
 
-* How to run the test suite
+## Running the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+You can run the test suite from inside the web container
 
-* Deployment instructions
+```bash
+docker compose exec web bash
+```
 
-* ...
+```bash
+bundle exec rspec
+```
+
+## Linting
+This app has rubocop installed. To run linting inside the web container:
+
+```bash
+docker compose exec web bash
+```
+
+```bash
+bundle exec rubocop
+```
