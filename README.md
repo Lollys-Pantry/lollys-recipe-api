@@ -5,6 +5,12 @@
 To run the application using Docker, will need to have Docker installed on your machine. 
 [Get Docker](https://docs.docker.com/get-docker/)
 
+The first time you start the app, you will need to create a .env file. Copy the .env-example to .env
+
+```bash
+cp .env-example .env
+```
+
 Once Docker is installed and running:
 
 ```bash
