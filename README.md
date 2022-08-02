@@ -38,6 +38,7 @@ bundle exec rspec
 ```
 
 ## Linting
+
 This app has rubocop installed. To run linting inside the web container:
 
 ```bash
