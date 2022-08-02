@@ -1,1 +1,18 @@
 require: rubocop-rails
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 3.1.2
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'public/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
