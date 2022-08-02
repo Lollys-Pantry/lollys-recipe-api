@@ -1,8 +1,0 @@
-.dockerignore
-.env
-.env.*
-.git
-.ruby-*
-log/*
-tmp
-
