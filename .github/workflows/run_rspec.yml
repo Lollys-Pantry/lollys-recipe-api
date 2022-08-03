@@ -1,0 +1,15 @@
+name: Test
+on: [push, pull_request]
+jobs: 
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-latest
+    runs:
+      using: 'docker'
+      image: 'Dockerfile'
+      env: 
+        POSTGRES_PASSWORD: password
+        POSTGRES_HOST: db
+        POSTGRES_USER: postgres
+    
+    

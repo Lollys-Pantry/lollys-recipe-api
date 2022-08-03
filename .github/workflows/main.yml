@@ -3,8 +3,8 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Builds the docker container
+    name: runs RSpec
     steps:
-      - name: Build action step
-        uses: actions/build-action@v1
+      - name: Test step
+        uses: actions/test
     
