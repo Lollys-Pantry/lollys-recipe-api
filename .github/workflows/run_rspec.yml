@@ -1,0 +1,20 @@
+name: Test
+on: [push, pull_request]
+jobs: 
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create .env
+        run: cp .env-example .env
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Start services
+        run: docker compose up -d
+      - name: Run test
+        run: docker compose exec web bash <<< 'bundle exec rails db:drop db:create db:migrate RAILS_ENV=test; bundle exec rspec'
+      - name: Stop services
+        run: docker compose down -v
+            
