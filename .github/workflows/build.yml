@@ -1,0 +1,9 @@
+name: 'Build'
+description: 'Docker build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env: 
+    POSTGRES_PASSWORD: password
+    POSTGRES_HOST: db
+    POSTGRES_USER: postgres

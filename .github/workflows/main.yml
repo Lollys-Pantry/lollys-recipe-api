@@ -1,0 +1,10 @@
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Builds the docker container
+    steps:
+      - name: Build action step
+        uses: actions/build-action@v1
+    
