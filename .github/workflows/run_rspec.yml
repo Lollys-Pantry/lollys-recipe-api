@@ -4,12 +4,13 @@ jobs:
   rspec-test:
     name: RSpec
     runs-on: ubuntu-latest
-    runs:
-      using: 'docker'
-      image: 'Dockerfile'
-      env: 
-        POSTGRES_PASSWORD: password
-        POSTGRES_HOST: db
-        POSTGRES_USER: postgres
-    
-    
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v3.1.0
+      - name: Start services
+        run: docker compose up
+      - name: Run test
+        run: docker compose exec web bash 'bundle exec rails db:drop db:create db:migrate RAILS_ENV=test; bundle exec rspec'
+            
