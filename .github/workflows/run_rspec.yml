@@ -1,8 +1,8 @@
 name: Test
 on: [push, pull_request]
 jobs: 
-  rspec-test:
-    name: RSpec
+  rspec-rubocop:
+    name: RSpec and Rubocop
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,6 +15,8 @@ jobs:
         run: docker compose up -d
       - name: Run test
         run: docker compose exec web bash <<< 'bundle exec rails db:drop db:create db:migrate RAILS_ENV=test; bundle exec rspec'
+      - name: Run lint
+        run: docker compose exec web bash <<< 'bundle exec rubocop'
       - name: Stop services
         run: docker compose down -v
             
