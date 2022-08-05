@@ -40,4 +40,11 @@ RSpec.describe Recipe, type: :model do
       expect(Recipe.count).to eq 0
     end
   end
+
+  context 'serializer' do
+    it 'serializes the recipe' do
+      recipe = Recipe.create(name: 'Recipe Title')
+      expect(recipe.as_json).to include('name' => 'Recipe Title')
+    end
+  end
 end
