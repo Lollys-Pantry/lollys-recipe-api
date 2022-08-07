@@ -66,3 +66,5 @@ Rails.application.configure do
 
   config.hosts << 'lollys-recipe-api'
 end
+
+Rails.application.routes.default_url_options = { host: "http://localhost:3000" }
