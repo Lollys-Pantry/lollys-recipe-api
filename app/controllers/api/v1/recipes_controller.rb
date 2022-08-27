@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Controller for Recipe actions
-class RecipesController < ApplicationController
+class Api::V1::RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show update destroy]
 
   # GET /recipes
@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      render json: @recipe, status: :created, location: @recipe
+      render json: @recipe, status: :created, location: api_vi_recipe_path(@recipe)
     else
       render json: @recipe.errors, status: :unprocessable_entity
     end
