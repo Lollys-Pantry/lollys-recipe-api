@@ -2,4 +2,4 @@ name: Test
 on: [push, pull_request]
 jobs: 
   call-workflow:
-    uses: lollys-pantry/triple-r/.github/workflows/rspec-rubocop-rails.yml@main
+    uses: lollys-pantry/triple-r-action/.github/workflows/rspec-rubocop-rails.yml@main
