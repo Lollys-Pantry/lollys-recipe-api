@@ -8,7 +8,7 @@ module Api
 
       # GET /recipes
       def index
-        @recipes = Recipe.all
+        @recipes = Recipe.order(:name)
 
         render json: @recipes
       end
@@ -52,8 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def recipe_params
-        params.require(:recipe).permit(:name, :description, :servings, :prep_time, :cook_time, :sprouty_pie,
-                                       :lollys_pantry)
+        params.require(:recipe).permit(:name, :description, :servings, :prep_time, :cook_time, :sprouty_pie, :lollys_pantry)
       end
     end
   end
