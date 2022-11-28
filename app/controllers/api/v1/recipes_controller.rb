@@ -53,7 +53,7 @@ module Api
       # Only allow a list of trusted parameters through.
       def recipe_params
         params.require(:recipe)
-              .permit(:name, :description, :servings, :prep_time, :cook_time, :sprouty_pie, :lollys_pantry)
+              .permit(:name, :description, :servings, :prep_time, :cook_time, :sprouty_pie, :lollys_pantry, :image)
       end
     end
   end
