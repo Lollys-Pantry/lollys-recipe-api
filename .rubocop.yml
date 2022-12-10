@@ -16,3 +16,6 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+Style/SymbolArray:
+  Exclude:
+    - 'app/controllers/api/v1/recipes_controller.rb'
