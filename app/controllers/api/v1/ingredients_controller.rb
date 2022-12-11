@@ -5,10 +5,11 @@ module Api
     # controller for Ingredient actions
     class IngredientsController < ApplicationController
       before_action :set_ingredient, only: %i[show update destroy]
+      before_action :get_recipe
 
       # GET /ingredients
       def index
-        @ingredients = Ingredient.all
+        @ingredients = @recipe.ingredients
 
         render json: @ingredients
       end
@@ -20,10 +21,10 @@ module Api
 
       # POST /ingredients
       def create
-        @ingredient = Ingredient.new(ingredient_params)
+        @ingredient = @recipes.ingredients.build
 
         if @ingredient.save
-          render json: @ingredient, status: :created, location: api_v1_ingredient_path(@ingredient)
+          render json: @ingredient, status: :created, location: api_v1_recipe_ingredients_path(@recipe)
         else
           render json: @ingredient.errors, status: :unprocessable_entity
         end
@@ -47,12 +48,16 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_ingredient
-        @ingredient = Ingredient.find(params[:id])
+        @ingredient = @recipe.ingredients.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def ingredient_params
         params.require(:ingredient).permit(:quantity, :measurement, :name, :preparation, :recipe_id)
+      end
+
+      def get_recipe
+        @recipe = Recipe.find(params[:recipe_id])
       end
     end
   end
