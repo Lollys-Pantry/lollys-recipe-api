@@ -5,7 +5,7 @@ module Api
     # controller for Ingredient actions
     class IngredientsController < ApplicationController
       before_action :set_ingredient, only: %i[show update destroy]
-      before_action :get_recipe
+      before_action :set_recipe
 
       # GET /ingredients
       def index
@@ -56,7 +56,7 @@ module Api
         params.require(:ingredient).permit(:quantity, :measurement, :name, :preparation, :recipe_id)
       end
 
-      def get_recipe
+      def set_recipe
         @recipe = Recipe.find(params[:recipe_id])
       end
     end

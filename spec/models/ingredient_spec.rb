@@ -41,7 +41,7 @@ RSpec.describe Ingredient, type: :model do
 
   context 'serializer' do
     it 'serializes the ingredient' do
-      ingredient = Ingredient.create(quantity: 5, measurement: 'each', name: 'tomato')
+      ingredient = Ingredient.create(quantity: 5, measurement: 'each', name: 'tomato', recipe_id: recipe.id)
       expect(ingredient.as_json).to include('name' => 'tomato')
     end
   end

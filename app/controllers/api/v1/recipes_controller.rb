@@ -54,8 +54,13 @@ module Api
       def recipe_params
         params.require(:recipe)
               .permit(:id, :name, :description, :servings, :prep_time,
-                      :cook_time, :sprouty_pie, :lollys_pantry,  :created_at, :updated_at,
-                      ingredients_attributes: [:id, :recipe_id, :quantity, :measurement, :name, :preparation, :created_at, :updated_at, :_destroy,])
+                      :cook_time, :sprouty_pie, :lollys_pantry, :created_at, :updated_at,
+                      ingredients_attributes:
+                        [
+                          :id, :recipe_id, :quantity, :measurement,
+                          :name, :preparation, :created_at, :updated_at,
+                          :_destroy
+                        ])
       end
     end
   end
