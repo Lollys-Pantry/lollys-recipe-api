@@ -10,12 +10,12 @@ module Api
       def index
         @recipes = Recipe.order(:name)
 
-        render json: @recipes, include: ['ingredients']
+        render json: @recipes, include: ['ingredients' 'nutritional_labels']
       end
 
       # GET /recipes/1
       def show
-        render json: @recipe, include: ['ingredients']
+        render json: @recipe, include: ['ingredients' 'nutritional_labels']
       end
 
       # POST /recipes
@@ -32,7 +32,7 @@ module Api
       # PATCH/PUT /recipes/1
       def update
         if @recipe.update(recipe_params)
-          render json: @recipe, include: ['ingredients']
+          render json: @recipe, include: ['ingredients', 'nutritional_labels']
         else
           render json: @recipe.errors, status: :unprocessable_entity
         end
@@ -60,6 +60,12 @@ module Api
                           :id, :recipe_id, :quantity, :measurement,
                           :name, :preparation, :created_at, :updated_at,
                           :_destroy
+                        ],
+                      nutritional_labels_attributes:
+                        [
+                          :serving_size, :calories, :total_fat,:saturated_fat,
+                          :sodium, :carbohydrates, :fiber, :sugar, :protein,
+                          :recipe_id
                         ])
       end
     end

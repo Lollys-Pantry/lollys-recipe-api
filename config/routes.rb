@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes do
         resources :ingredients
+        resources :nutritional_labels
       end
     end
   end
