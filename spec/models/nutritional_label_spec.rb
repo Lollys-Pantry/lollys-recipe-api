@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe NutritionalLabel, type: :model do
@@ -59,10 +61,9 @@ RSpec.describe NutritionalLabel, type: :model do
         carbohydrates: '44g',
         fiber: '5g',
         sugar: '2g',
-        protein: '7g', recipe_id: recipe.id 
+        protein: '7g', recipe_id: recipe.id
       )
       expect(nutritional_label.as_json).to include('serving_size' => '1 cup')
     end
   end
-
 end

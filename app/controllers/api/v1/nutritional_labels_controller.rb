@@ -4,7 +4,7 @@ module Api
   module V1
     # controller for NutritionalLabel actions
     class NutritionalLabelsController < ApplicationController
-      before_action :set_nutritional_label, only: %i[ show update destroy ]
+      before_action :set_nutritional_label, only: %i[show update destroy]
       before_action :set_recipe
 
       # GET /nutritional_labels
@@ -54,16 +54,8 @@ module Api
       # Only allow a list of trusted parameters through.
       def nutritional_label_params
         params.require(:nutritional_label)
-              .permit(:serving_size,
-                      :calories,
-                      :total_fat,
-                      :saturated_fat,
-                      :sodium,
-                      :carbohydrates,
-                      :fiber,
-                      :sugar,
-                      :protein,
-                      :recipe_id)
+              .permit(:serving_size, :calories, :total_fat, :saturated_fat, :sodium,
+                      :carbohydrates, :fiber, :sugar, :protein, :recipe_id)
       end
 
       def set_recipe

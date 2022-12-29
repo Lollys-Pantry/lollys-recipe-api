@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "api/v1/nutritional_labels", type: :request do
+RSpec.describe 'api/v1/nutritional_labels', type: :request do
   let(:recipe) { Recipe.create(name: 'cookie') }
   let(:valid_attributes) do
     {
@@ -15,24 +15,24 @@ RSpec.describe "api/v1/nutritional_labels", type: :request do
       fiber: '5g',
       sugar: '2g',
       protein: '7g',
-      recipe_id: recipe.id 
+      recipe_id: recipe.id
     }
   end
 
-  let(:valid_headers) {
+  let(:valid_headers) do
     {}
-  }
+  end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       NutritionalLabel.create! valid_attributes
       get api_v1_recipe_nutritional_labels_path(recipe), headers: valid_headers, as: :json
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       # nutritional_label = NutritionalLabel.create! valid_attributes
       get api_v1_recipe_nutritional_labels_url(recipe), as: :json
       expect(response).to be_successful
@@ -43,7 +43,7 @@ RSpec.describe "api/v1/nutritional_labels", type: :request do
   #   context "with valid parameters" do
   #     it "creates a new NutritionalLabel" do
   #       expect {
-  #         post api_v1_nutritional_labels_url(recipe),
+  #         post api_v1_recipe_nutritional_labels_url(recipe),
   #              params: { nutritional_label: valid_attributes }, headers: valid_headers, as: :json
   #       }.to change(NutritionalLabel, :count).by(1)
   #     end
@@ -54,7 +54,7 @@ RSpec.describe "api/v1/nutritional_labels", type: :request do
   #       expect(response).to have_http_status(:created)
   #       expect(response.content_type).to match(a_string_including("application/json"))
   #     end
-  #   end
+  # end
 
   #   context "with invalid parameters" do
   #     it "does not create a new NutritionalLabel" do
@@ -111,7 +111,7 @@ RSpec.describe "api/v1/nutritional_labels", type: :request do
   #   it "destroys the requested nutritional_label" do
   #     nutritional_label = NutritionalLabel.create! valid_attributes
   #     expect {
-  #       delete nutritional_label_url(nutritional_label), headers: valid_headers, as: :json
+  #       delete api_v1_recipe_nutritional_labels_url(recipe), headers: valid_headers, as: :json
   #     }.to change(NutritionalLabel, :count).by(-1)
   #   end
   # end
