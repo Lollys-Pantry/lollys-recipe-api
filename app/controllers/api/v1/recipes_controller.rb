@@ -66,7 +66,7 @@ module Api
                         [
                           :id, :serving_size, :calories, :total_fat,
                           :saturated_fat, :sodium, :carbohydrates,
-                          :fiber, :sugar, :protein, :recipe_id,:_destroy
+                          :fiber, :sugar, :protein, :recipe_id, :_destroy
                         ],
                       cooking_steps_attributes:
                         [
