@@ -66,11 +66,11 @@ module Api
                         [
                           :id, :serving_size, :calories, :total_fat,
                           :saturated_fat, :sodium, :carbohydrates,
-                          :fiber, :sugar, :protein, :recipe_id
+                          :fiber, :sugar, :protein, :recipe_id, :_destroy
                         ],
                       cooking_steps_attributes:
                         [
-                          :id, :step, :description, :recipe_id
+                          :id, :step, :description, :recipe_id, :_destroy
                         ])
       end
       # rubocop:enable Metrics/MethodLength
