@@ -10,12 +10,12 @@ module Api
       def index
         @recipes = Recipe.order(:name)
 
-        render json: @recipes, include: %w[ingredients nutritional_labels]
+        render json: @recipes, include: %w[ingredients nutritional_labels cooking_steps]
       end
 
       # GET /recipes/1
       def show
-        render json: @recipe, include: %w[ingredients nutritional_labels]
+        render json: @recipe, include: %w[ingredients nutritional_labels cooking_steps]
       end
 
       # POST /recipes
@@ -32,7 +32,7 @@ module Api
       # PATCH/PUT /recipes/1
       def update
         if @recipe.update(recipe_params)
-          render json: @recipe, include: %w[ingredients nutritional_labels]
+          render json: @recipe, include: %w[ingredients nutritional_labels cooking_steps]
         else
           render json: @recipe.errors, status: :unprocessable_entity
         end
@@ -64,9 +64,13 @@ module Api
                         ],
                       nutritional_labels_attributes:
                         [
-                          :serving_size, :calories, :total_fat, :saturated_fat,
-                          :sodium, :carbohydrates, :fiber, :sugar, :protein,
-                          :recipe_id
+                          :id, :serving_size, :calories, :total_fat,
+                          :saturated_fat, :sodium, :carbohydrates,
+                          :fiber, :sugar, :protein, :recipe_id
+                        ],
+                      cooking_steps_attributes:
+                        [
+                          :id, :step, :description, :recipe_id
                         ])
       end
       # rubocop:enable Metrics/MethodLength
